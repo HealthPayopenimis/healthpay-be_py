@@ -5,14 +5,6 @@
       "pip": "openimis-be-core @ git+https://github.com/HealthPayopenimis/healthpay-be-core_py.git@38b19c7aa4ad1cea37cbfff03e1040f442d91d6b"
     },
     {
-      "name": "individual",
-      "pip": "openimis-be-individual==v1.4.0"
-    },
-    {
-      "name": "workflow",
-      "pip": "openimis-be-workflow==v1.1.0"
-    },
-    {
       "name": "tasks_management",
       "pip": "openimis-be-tasks_management @ git+https://github.com/HealthPayopenimis/healthpay-be-tasks_management_py.git@f6a92adc4bcb644ada54f24bcba61dc942101d40"
     },
@@ -109,10 +101,6 @@
       "pip": "openimis-be-calcrule_commission==v1.6.1"
     },
     {
-      "name": "calcrule_validations",
-      "pip": "openimis-be-calcrule_validations==v1.2.0"
-    },
-    {
       "name": "calcrule_contribution_income_percentage",
       "pip": "openimis-be-calcrule_contribution_income_percentage==v1.8.1"
     },
@@ -127,10 +115,6 @@
     {
       "name": "im_export",
       "pip": "openimis-be-im_export==v1.6.0"
-    },
-    {
-      "name": "payment_cycle",
-      "pip": "openimis-be-payment_cycle==v1.3.2"
     },
     {
       "name": "controls",
