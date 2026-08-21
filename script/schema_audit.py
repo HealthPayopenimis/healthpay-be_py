@@ -25,13 +25,13 @@ checked_models = 0
 checked_fields = 0
 
 with connection.cursor() as cursor:
-    table_names = set(connection.introspection.table_names(cursor))
+    table_names = set(connection.introspection.table_names(cursor, include_views=True))
 
     for model in apps.get_models(include_auto_created=True):
         meta = model._meta
         if not meta.managed or meta.proxy:
             continue
-        table = meta.db_table
+        table = meta.db_table[:63]  # PostgreSQL truncates identifiers to 63 bytes on CREATE and lookup alike
         checked_models += 1
         if table not in table_names:
             failures.append(f"MISSING TABLE: {table} (model {meta.label})")

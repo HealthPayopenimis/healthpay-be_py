@@ -122,7 +122,7 @@
     },
     {
       "name": "egypt_localization",
-      "pip": "healthpay-be-egypt @ git+https://github.com/HealthPayopenimis/healthpay-be-egypt_py.git@a5ac8b0dc79c9aefab6c4b3d6e6edd9bad121054"
+      "pip": "healthpay-be-egypt @ git+https://github.com/HealthPayopenimis/healthpay-be-egypt_py.git@573933b27643f480dc64889fb5b38433a05f71d0"
     }
   ]
 }
