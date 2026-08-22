@@ -30,7 +30,12 @@
     },
     {
       "name": "insuree",
-      "pip": "openimis-be-insuree @ git+https://github.com/HealthPayopenimis/healthpay-be-insuree_py.git@ebdb761f9412b926ef712c7e9578b13f466261f8"
+      "pip": "openimis-be-insuree @ git+https://github.com/HealthPayopenimis/healthpay-be-insuree_py.git@ebdb761f9412b926ef712c7e9578b13f466261f8",
+      "config": {
+        "insuree_number_validator": "egypt_localization.validators.validate_egyptian_national_id_for_insuree",
+        "insuree_number_max_length": 14,
+        "insuree_number_min_length": 14
+      }
     },
     {
       "name": "policy",
@@ -122,7 +127,7 @@
     },
     {
       "name": "egypt_localization",
-      "pip": "healthpay-be-egypt @ git+https://github.com/HealthPayopenimis/healthpay-be-egypt_py.git@1f5e878a6c7015dc4971b0cf8821ade9971430dc"
+      "pip": "healthpay-be-egypt @ git+https://github.com/HealthPayopenimis/healthpay-be-egypt_py.git@73d66e870cf5c2872b8b0445b443208f3a642cf7"
     }
   ]
 }
