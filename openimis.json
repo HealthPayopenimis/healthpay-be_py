@@ -34,7 +34,7 @@
     },
     {
       "name": "policy",
-      "pip": "openimis-be-policy @ git+https://github.com/HealthPayopenimis/healthpay-be-policy_py.git@a5f1e7d8212b736025f86f771e886c01fd55f5db"
+      "pip": "openimis-be-policy @ git+https://github.com/HealthPayopenimis/healthpay-be-policy_py.git@216446f27f85e528b9c20893602bded576c3ac6d"
     },
     {
       "name": "contribution",
