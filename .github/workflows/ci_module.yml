@@ -74,12 +74,12 @@ jobs:
           echo "TARGET_BRANCH=$TARGET_BRANCH" >> $GITHUB_ENV
           echo "Cloning openimis-be_py from branch: $TARGET_BRANCH"
 
-          # Clone with the determined branch
+          # Clone the HealthPay backend assembly used by HealthPay module forks.
           rm -rf ./openimis
-          git clone --depth=1 --branch="$TARGET_BRANCH" https://github.com/openimis/openimis-be_py.git ./openimis || {
-            echo "Failed to clone branch '$TARGET_BRANCH' – falling back to 'develop'"
-            git clone --depth=1 --branch=develop https://github.com/openimis/openimis-be_py.git ./openimis
-            echo "Cloned fallback branch: develop"
+          git clone --depth=1 --branch="$TARGET_BRANCH" https://github.com/HealthPayopenimis/healthpay-be_py.git ./openimis || {
+            echo "Failed to clone branch '$TARGET_BRANCH' – falling back to 'hp-main'"
+            git clone --depth=1 --branch=hp-main https://github.com/HealthPayopenimis/healthpay-be_py.git ./openimis
+            echo "Cloned fallback branch: hp-main"
           }
 
           # Verify what we actually got
@@ -109,8 +109,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install jq
 
-          export MODULE_NAME="$(echo $GITHUB_REPOSITORY | sed 's#^openimis/openimis-be-\(.*\)_py$#\1#')"
-          
+          REPOSITORY_NAME="${GITHUB_REPOSITORY#*/}"
+          export MODULE_NAME="$(echo "$REPOSITORY_NAME" | sed -E 's/^(healthpay-|openimis-)?be-(.*)_py$/\2/')"
+          if [[ -z "$MODULE_NAME" || "$MODULE_NAME" == "$REPOSITORY_NAME" ]]; then
+            echo "Unable to derive module name from repository: $GITHUB_REPOSITORY" >&2
+            exit 1
+          fi
+
           echo "MODULE_NAME=$MODULE_NAME" >> $GITHUB_ENV
           
           # Add or replace MODULE_NAME module in openimis.json (local version)
