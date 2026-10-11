@@ -30,7 +30,7 @@
     },
     {
       "name": "insuree",
-      "pip": "openimis-be-insuree @ git+https://github.com/HealthPayopenimis/healthpay-be-insuree_py.git@ebdb761f9412b926ef712c7e9578b13f466261f8"
+      "pip": "openimis-be-insuree @ git+https://github.com/HealthPayopenimis/healthpay-be-insuree_py.git@33dac34ccf35fca65d78442bf48d35639b44a156"
     },
     {
       "name": "policy",
@@ -122,7 +122,7 @@
     },
     {
       "name": "egypt_localization",
-      "pip": "healthpay-be-egypt @ git+https://github.com/HealthPayopenimis/healthpay-be-egypt_py.git@974a406891af918104f885d3e4e622196caf94c8"
+      "pip": "healthpay-be-egypt @ git+https://github.com/HealthPayopenimis/healthpay-be-egypt_py.git@0fea5892a509f41a620908e6d3dc0fd89448bc1c"
     }
   ]
 }

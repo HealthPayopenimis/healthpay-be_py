@@ -14,6 +14,10 @@ from .security import REMOTE_USER_AUTHENTICATION
 # Makes openimis_apps available to other modules
 OPENIMIS_APPS = openimis_apps()
 
+# Synthetic-data management commands must be explicitly enabled by the
+# operator for an owner-authorized QA deployment, never enabled by default.
+HEALTHPAY_DEPLOYMENT_ENV = os.environ.get("HEALTHPAY_DEPLOYMENT_ENV", "production").lower()
+HEALTHPAY_QA_AUTHORIZATION = os.environ.get("HEALTHPAY_QA_AUTHORIZATION", "")
 
 def SITE_ROOT():
     root = os.environ.get("SITE_ROOT", "")
@@ -212,4 +216,3 @@ EMAIL_USE_SSL = os.environ.get("EMAIL_USE_SSL", False)
 
 # By default, the maximum upload size is 2.5Mb, which is a bit short for base64 picture upload
 DATA_UPLOAD_MAX_MEMORY_SIZE = int(os.environ.get('DATA_UPLOAD_MAX_MEMORY_SIZE', 10 * 1024 * 1024))
-

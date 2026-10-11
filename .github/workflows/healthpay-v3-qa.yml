@@ -1,0 +1,24 @@
+name: HealthPay V3 QA assembly
+
+on:
+  push:
+    branches: ['issue36-37/qa-release']
+  workflow_dispatch:
+
+jobs:
+  build-and-regress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build immutable pinned backend
+        run: docker build --build-arg DB_DEFAULT=postgresql --target app -t healthpay-v3-backend:${{ github.sha }} .
+      - name: Isolated no-network regressions
+        run: |
+          docker run --rm --network none --entrypoint python -e NO_DATABASE=True -e DJANGO_SETTINGS_MODULE=openIMIS.settings healthpay-v3-backend:${{ github.sha }} -c '
+          import django, unittest
+          django.setup()
+          suite=unittest.TestSuite()
+          for name in ["insuree.tests.test_insuree_validation.DuplicateNationalIdValidationTest","insuree.tests.test_insuree_validation.GraphQLValidityContractTest","egypt_localization.tests.test_codab_import.CodabImportPureTests","egypt_localization.tests.test_codab_command.CodabCommandTest"]:
+              suite.addTests(unittest.defaultTestLoader.loadTestsFromName(name))
+          result=unittest.TextTestRunner(verbosity=2).run(suite)
+          raise SystemExit(not result.wasSuccessful())'
