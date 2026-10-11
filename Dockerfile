@@ -34,6 +34,8 @@ WORKDIR /openimis-be
 RUN chmod a+x /openimis-be/script/entrypoint.sh /openimis-be/script/load_fixture.sh
 
 # Install requirements
+# Preserve the corrected V2 dependency baseline for this bounded QA change.
+ENV PIP_CONSTRAINT=/openimis-be/constraints-v3-qa.txt
 RUN pip install -r requirements.txt
 RUN pip install -r sentry-requirements.txt
 
